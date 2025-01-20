@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.movieticket.ogrizkov.OgrizkovApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-01-20T22:19:24" hostname="lenovoubuntutitan" time="0.53">
+  <properties/>
+  <testcase name="contextLoads()" classname="com.movieticket.ogrizkov.OgrizkovApplicationTests" time="0.53"/>
+  <system-out><![CDATA[00:19:23.148 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.movieticket.ogrizkov.OgrizkovApplicationTests]: OgrizkovApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:19:23.224 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.movieticket.ogrizkov.OgrizkovApplication for test class com.movieticket.ogrizkov.OgrizkovApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.1)
+
+2025-01-21T00:19:23.564+02:00  INFO 182741 --- [ogrizkov] [    Test worker] c.m.ogrizkov.OgrizkovApplicationTests    : Starting OgrizkovApplicationTests using Java 21.0.5 with PID 182741 (started by titaneo in /home/titaneo/Programming/interview/movie-ticket)
+2025-01-21T00:19:23.566+02:00  INFO 182741 --- [ogrizkov] [    Test worker] c.m.ogrizkov.OgrizkovApplicationTests    : No active profile set, falling back to 1 default profile: "default"
+2025-01-21T00:19:24.603+02:00  WARN 182741 --- [ogrizkov] [    Test worker] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: ea861490-f975-4eb8-8663-f588ea8c8c8e
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-01-21T00:19:24.625+02:00  INFO 182741 --- [ogrizkov] [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-01-21T00:19:24.749+02:00  INFO 182741 --- [ogrizkov] [    Test worker] c.m.ogrizkov.OgrizkovApplicationTests    : Started OgrizkovApplicationTests in 1.433 seconds (process running for 2.197)
+]]></system-out>
+  <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/home/titaneo/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.15.11/a38b16385e867f59a641330f0362ebe742788ed8/byte-buddy-agent-1.15.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>
