@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ogrizkov.movieticket.MovieTicketApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-01-21T15:49:59" hostname="lenovoubuntutitan" time="0.673">
+  <properties/>
+  <testcase name="contextLoads()" classname="com.ogrizkov.movieticket.MovieTicketApplicationTests" time="0.673"/>
+  <system-out><![CDATA[17:49:57.736 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.ogrizkov.movieticket.MovieTicketApplicationTests]: MovieTicketApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17:49:57.842 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.ogrizkov.movieticket.MovieTicketApplication for test class com.ogrizkov.movieticket.MovieTicketApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.1)
+
+2025-01-21T17:49:58.166+02:00  INFO 198623 --- [ogrizkov] [    Test worker] c.o.m.MovieTicketApplicationTests        : Starting MovieTicketApplicationTests using Java 21.0.5 with PID 198623 (started by titaneo in /home/titaneo/Programming/interview/movie-ticket)
+2025-01-21T17:49:58.167+02:00  INFO 198623 --- [ogrizkov] [    Test worker] c.o.m.MovieTicketApplicationTests        : No active profile set, falling back to 1 default profile: "default"
+2025-01-21T17:49:59.120+02:00  INFO 198623 --- [ogrizkov] [    Test worker] c.o.m.MovieTicketApplicationTests        : Started MovieTicketApplicationTests in 1.167 seconds (process running for 2.133)
+]]></system-out>
+  <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/home/titaneo/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.15.11/a38b16385e867f59a641330f0362ebe742788ed8/byte-buddy-agent-1.15.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>
