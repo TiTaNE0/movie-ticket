@@ -8,7 +8,8 @@ import java.util.List;
 
 @RestController
 public class UserController {
-    private UserRepository userRepository;
+
+    private final UserRepository userRepository;
 
     public UserController(UserRepository userRepository) {
         this.userRepository = userRepository;

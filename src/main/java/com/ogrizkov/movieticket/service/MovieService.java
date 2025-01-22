@@ -1,23 +1,27 @@
 package com.ogrizkov.movieticket.service;
 
-import com.ogrizkov.movieticket.model.Movie;
+import com.ogrizkov.movieticket.dto.MovieDto;
+import com.ogrizkov.movieticket.dto.NewMovieDto;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 public interface MovieService {
 
-    void addMovie(Movie movie);
+    MovieDto getMovie(Long id);
 
-    void updateMovie(Movie movie);
+    MovieDto addMovie(NewMovieDto movie);
+
+    void updateMovie(int id);
 
     void deleteMovie(int id);
 
-    List<Movie> getAllMovies();
+    List<MovieDto> getAllMovies();
 
-    List<Movie> getMoviesByGenre(String genre);
+    List<MovieDto> getMoviesByGenre(String genre);
 
-    List<Movie> getMoviesByRatingFromTo(int from, int to);
+    List<MovieDto> getMoviesByRatingFromTo(int from, int to);
 
-    List<Movie> getMoviesByYear(int year);
+    List<MovieDto> getMoviesByYear(int year);
 
 }
