@@ -1,4 +1,4 @@
-package com.ogrizkov.movieticket;
+package com.ogrizkov;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

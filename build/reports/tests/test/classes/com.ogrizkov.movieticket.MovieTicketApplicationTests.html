@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.673s</div>
+<div class="counter">0.566s</div>
 <p>duration</p>
 </div>
 </td>
@@ -82,7 +82,7 @@
 </thead>
 <tr>
 <td class="success">contextLoads()</td>
-<td class="success">0.673s</td>
+<td class="success">0.566s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -90,8 +90,8 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>17:49:57.736 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.ogrizkov.movieticket.MovieTicketApplicationTests]: MovieTicketApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-17:49:57.842 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.ogrizkov.movieticket.MovieTicketApplication for test class com.ogrizkov.movieticket.MovieTicketApplicationTests
+<pre>22:48:07.077 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.ogrizkov.movieticket.MovieTicketApplicationTests]: MovieTicketApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+22:48:07.159 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.ogrizkov.movieticket.MovieTicketApplication for test class com.ogrizkov.movieticket.MovieTicketApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -102,9 +102,29 @@
 
  :: Spring Boot ::                (v3.4.1)
 
-2025-01-21T17:49:58.166+02:00  INFO 198623 --- [ogrizkov] [    Test worker] c.o.m.MovieTicketApplicationTests        : Starting MovieTicketApplicationTests using Java 21.0.5 with PID 198623 (started by titaneo in /home/titaneo/Programming/interview/movie-ticket)
-2025-01-21T17:49:58.167+02:00  INFO 198623 --- [ogrizkov] [    Test worker] c.o.m.MovieTicketApplicationTests        : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2025-01-21T17:49:59.120+02:00  INFO 198623 --- [ogrizkov] [    Test worker] c.o.m.MovieTicketApplicationTests        : Started MovieTicketApplicationTests in 1.167 seconds (process running for 2.133)
+2025-01-21T22:48:07.455+02:00  INFO 210828 --- [ogrizkov] [    Test worker] c.o.m.MovieTicketApplicationTests        : Starting MovieTicketApplicationTests using Java 21.0.5 with PID 210828 (started by titaneo in /home/titaneo/Programming/interview/movie-ticket)
+2025-01-21T22:48:07.456+02:00  INFO 210828 --- [ogrizkov] [    Test worker] c.o.m.MovieTicketApplicationTests        : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2025-01-21T22:48:07.935+02:00  INFO 210828 --- [ogrizkov] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-21T22:48:07.952+02:00  INFO 210828 --- [ogrizkov] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 0 JPA repository interfaces.
+2025-01-21T22:48:08.240+02:00  INFO 210828 --- [ogrizkov] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-21T22:48:08.356+02:00  INFO 210828 --- [ogrizkov] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:d2c03e8d-41f7-4a25-9a93-dfe9f67baa8d user=SA
+2025-01-21T22:48:08.362+02:00  INFO 210828 --- [ogrizkov] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-21T22:48:08.423+02:00  INFO 210828 --- [ogrizkov] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-21T22:48:08.458+02:00  INFO 210828 --- [ogrizkov] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
+2025-01-21T22:48:08.481+02:00  INFO 210828 --- [ogrizkov] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-21T22:48:08.646+02:00  INFO 210828 --- [ogrizkov] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-21T22:48:08.697+02:00  INFO 210828 --- [ogrizkov] [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-21T22:48:08.891+02:00  INFO 210828 --- [ogrizkov] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-21T22:48:08.894+02:00  INFO 210828 --- [ogrizkov] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-21T22:48:09.008+02:00  WARN 210828 --- [ogrizkov] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-21T22:48:09.346+02:00  INFO 210828 --- [ogrizkov] [    Test worker] c.o.m.MovieTicketApplicationTests        : Started MovieTicketApplicationTests in 2.078 seconds (process running for 2.945)
 </pre>
 </span>
 </div>
@@ -127,7 +147,7 @@ WARNING: Dynamic loading of agents will be disallowed by default in a future rel
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.11.1</a> at 21 Jan 2025, 17:49:59</p>
+<a href="http://www.gradle.org">Gradle 8.11.1</a> at 21 Jan 2025, 22:48:10</p>
 </div>
 </div>
 </body>

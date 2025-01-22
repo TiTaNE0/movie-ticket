@@ -5,7 +5,7 @@ import com.ogrizkov.movieticket.model.Showtime;
 
 import java.util.List;
 
-public interface IShowtime {
+public interface ShowtimeService {
 
     void addShowtime(Movie movie, String theater, int startTime, int endTime);
 
