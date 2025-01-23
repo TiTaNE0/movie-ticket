@@ -1,18 +1,34 @@
 package com.ogrizkov.movieticket.model;
-import com.ogrizkov.user.User;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 
-import java.io.Serializable;
+import com.ogrizkov.user.User;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-public record Booking(
-        @Id
-        int id,
-        String userEmail,
-        int movieId,
-        int showtimeId,
-        int seatNumber,
-        int price
-    ) implements Serializable {
+@Table(name = "bookings")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class Booking {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "showtime_id", nullable = false)
+    private Showtime showtime;
+
+    @Column(nullable = false)
+    private Integer seatNumber;
+
+    @Column(nullable = false)
+    private Integer price;
 }

@@ -1,4 +1,4 @@
-package com.ogrizkov.movieticket.configuration;
+package com.ogrizkov.configuration;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

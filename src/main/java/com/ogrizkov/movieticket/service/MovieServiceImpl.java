@@ -1,65 +1,68 @@
 package com.ogrizkov.movieticket.service;
 
+import com.ogrizkov.movieticket.converters.MovieMapper;
 import com.ogrizkov.movieticket.dto.MovieDto;
-import com.ogrizkov.movieticket.dto.NewMovieDto;
-import com.ogrizkov.movieticket.dto.exceptions.NoSuchMovieException;
+import com.ogrizkov.movieticket.dto.exceptions.ResourceNotFoundException;
 import com.ogrizkov.movieticket.model.Movie;
 import com.ogrizkov.movieticket.repository.MovieRepository;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
+@Transactional // Class-level annotation for default transactional behavior
 public class MovieServiceImpl implements MovieService {
 
-    @Autowired
-    MovieRepository movieRepository;
+    private final MovieRepository movieRepository;
+    private final MovieMapper movieMapper;
 
-    @Autowired
-    ModelMapper modelMapper;
-
-    @Override
-    public MovieDto getMovie(Long id) {
-        Movie movie = movieRepository.findById(id).orElseThrow(() -> new NoSuchMovieException(id));
-        return modelMapper.map(movie, MovieDto.class);
+    public MovieServiceImpl(MovieRepository movieRepository, MovieMapper movieMapper) {
+        this.movieRepository = movieRepository;
+        this.movieMapper = movieMapper;
     }
 
     @Override
-    public MovieDto addMovie(NewMovieDto newMovie) {
-        Movie movie = new Movie(newMovie.title(), newMovie.genre(), newMovie.duration(), newMovie.rating(), newMovie.releaseYear());
-        movieRepository.save(movie);
-        return modelMapper.map(movie, MovieDto.class);
+    public MovieDto addMovie(MovieDto MovieDto) {
+        Movie movie = movieMapper.toEntity(MovieDto);
+        Movie savedMovie = movieRepository.save(movie);
+        return movieMapper.toDto(savedMovie);
     }
 
     @Override
-    public void updateMovie(int id) {
-
+    public MovieDto updateMovie(Long id, MovieDto MovieDto) {
+        Movie existingMovie = movieRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Movie not found with id: " + id));
+        movieMapper.updateMovieFromDto(MovieDto, existingMovie);
+        Movie updatedMovie = movieRepository.save(existingMovie);
+        return movieMapper.toDto(updatedMovie);
     }
 
     @Override
-    public void deleteMovie(int id) {
-
+    public void deleteMovie(Long id) {
+        if (!movieRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Movie not found with id: " + id);
+        }
+        movieRepository.deleteById(id);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<MovieDto> getAllMovies() {
-        return List.of();
+        List<Movie> movies = movieRepository.findAll();
+        return movies.stream()
+                .map(movieMapper::toDto)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public List<MovieDto> getMoviesByGenre(String genre) {
-        return List.of();
+    @Transactional(readOnly = true)
+    public MovieDto getMovieById(Long id) {
+        Movie movie = movieRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Movie not found with id: " + id));
+        return movieMapper.toDto(movie);
     }
 
-    @Override
-    public List<MovieDto> getMoviesByRatingFromTo(int from, int to) {
-        return List.of();
-    }
-
-    @Override
-    public List<MovieDto> getMoviesByYear(int year) {
-        return List.of();
-    }
 }
+
