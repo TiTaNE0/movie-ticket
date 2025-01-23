@@ -2,17 +2,14 @@ package com.ogrizkov.movieticket.model;
 
 import com.ogrizkov.user.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
-@Table(name = "bookings")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(exclude = {"user", "movie", "showtime"})
+@ToString(exclude = {"user", "movie", "showtime"})
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,12 +20,16 @@ public class Booking {
     private User user;
 
     @ManyToOne
+    @JoinColumn(name = "movie_id", nullable = false)
+    private Movie movie;
+
+    @ManyToOne
     @JoinColumn(name = "showtime_id", nullable = false)
     private Showtime showtime;
 
     @Column(nullable = false)
-    private Integer seatNumber;
+    private String seatNumber;
 
     @Column(nullable = false)
-    private Integer price;
+    private int price;
 }

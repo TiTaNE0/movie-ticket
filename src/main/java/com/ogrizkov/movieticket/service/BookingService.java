@@ -1,12 +1,17 @@
 package com.ogrizkov.movieticket.service;
 
+import com.ogrizkov.movieticket.dto.BookingDto;
+
+import java.util.List;
+
 public interface BookingService {
+    BookingDto createBooking(BookingDto bookingDto);
 
-    void bookShowtime(int id);
+    List<BookingDto> getBookingsByUser(Long userId);
 
-    void getBookingById(int id);
+    List<BookingDto> getBookingsByShowtime(Long showtimeId);
 
-    void getBookingByEmail(String email);
+    void cancelBooking(Long bookingId);
 
-
+    List<String> getAvailableSeats(Long showtimeId);
 }

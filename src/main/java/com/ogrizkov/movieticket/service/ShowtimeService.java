@@ -1,21 +1,22 @@
 package com.ogrizkov.movieticket.service;
 
-import com.ogrizkov.movieticket.model.Movie;
-import com.ogrizkov.movieticket.model.Showtime;
+import com.ogrizkov.movieticket.dto.ShowtimeDto;
 
 import java.util.List;
 
 public interface ShowtimeService {
 
-    void addShowtime(Movie movie, String theater, int startTime, int endTime);
+    ShowtimeDto addShowtime(ShowtimeDto showtimeDto);
 
-    void updateShowtime(Movie movie, String theater, int startTime, int endTime);
+    ShowtimeDto updateShowtime(Long id, ShowtimeDto showtimeDto);
 
-    void deleteShowtime(int id);
+    void deleteShowtime(Long id);
 
-    List<Showtime> getAllShowTimes();
+    List<ShowtimeDto> getShowtimesByMovie(Long movieId);
 
-    List<Showtime> getShowTimesByMovie(Movie movie);
+    List<ShowtimeDto> getShowtimesByTheater(Long theaterId);
 
-    List<Showtime> getShowTimesByTheater(String theater);
+    void updateSeatAvailability(Long showtimeId, String seatNumber, boolean isBooked);
+
+    boolean isOverlapping(ShowtimeDto showtimeDto);
 }

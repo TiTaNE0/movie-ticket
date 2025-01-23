@@ -10,6 +10,82 @@ tags:
   - name: Users
     description: User management operations
 paths:
+  /api/movies:
+    get:
+      summary: Get all movies
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MovieDto'
+    post:
+      summary: Add a new movie
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MovieDto'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MovieDto'
+    /api/movies/{id}:
+      get:
+        summary: Get a movie by ID
+        parameters:
+          - name: id
+            in: path
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: Successful response
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/MovieDto'
+      put:
+        summary: Update a movie
+        parameters:
+          - name: id
+            in: path
+            required: true
+            schema:
+              type: integer
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MovieDto'
+        responses:
+          '200':
+            description: Successful response
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/MovieDto'
+      delete:
+        summary: Delete a movie
+        parameters:
+          - name: id
+            in: path
+            required: true
+            schema:
+              type: integer
+        responses:
+          '204':
+            description: Successful response
+
   /api/users/register:
     post:
       summary: Register a new user
@@ -133,8 +209,134 @@ paths:
         '404':
           description: User not found
 
+/api/showtimes:
+  post:
+    summary: Add a new showtime
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ShowtimeDto'
+    responses:
+      '201':
+        description: Showtime created successfully
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShowtimeDto'
+      '400':
+        description: Overlapping showtime or invalid request
+  get:
+    summary: Fetch all showtimes
+    responses:
+      '200':
+        description: List of all showtimes
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ShowtimeDto'
+
+  /api/showtimes/{id}:
+    put:
+      summary: Update a showtime
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShowtimeDto'
+      responses:
+        '200':
+          description: Showtime updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShowtimeDto'
+        '400':
+          description: Overlapping showtime or invalid request
+        '404':
+          description: Showtime not found
+
+    delete:
+      summary: Delete a showtime by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Showtime deleted successfully
+        '404':
+          description: Showtime not found
+
+  /api/showtimes/movie/{movieId}:
+    get:
+      summary: Fetch all showtimes for a specific movie
+      parameters:
+        - name: movieId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of showtimes for the specified movie
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShowtimeDto'
+
+  /api/showtimes/theater/{theaterId}:
+    get:
+      summary: Fetch all showtimes for a specific theater
+      parameters:
+        - name: theaterId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of showtimes for the specified theater
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShowtimeDto'
+
 components:
   schemas:
+
+    MovieDto:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        genre:
+          type: string
+        durationMinutes:
+          type: integer
+        rating:
+          type: integer
+        releaseYear:
+          type: integer
+
     UserRegistrationRequest:
       type: object
       required:
@@ -189,3 +391,20 @@ components:
           type: string
           enum: [CUSTOMER, ADMIN]
           example: CUSTOMER
+
+    schemas:
+      ShowtimeDto:
+        type: object
+        properties:
+          id:
+            type: integer
+          movieId:
+            type: integer
+          theaterId:
+            type: integer
+          startTime:
+            type: string
+            format: date-time
+          endTime:
+            type: string
+            format: date-time
