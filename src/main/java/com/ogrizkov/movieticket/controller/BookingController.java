@@ -22,7 +22,12 @@ public class BookingController {
 
     @PostMapping
     public ResponseEntity<BookingDto> createBooking(@RequestBody BookingDto bookingDto) {
-        BookingDto createdBooking = bookingService.createBooking(bookingDto);
+        BookingDto createdBooking = null;
+        try {
+            createdBooking = bookingService.createBooking(bookingDto);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
         return new ResponseEntity<>(createdBooking, HttpStatus.CREATED);
     }
 

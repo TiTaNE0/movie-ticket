@@ -32,4 +32,5 @@ public class Movie {
         this.rating = rating;
         this.releaseYear = releaseYear;
     }
+
 }

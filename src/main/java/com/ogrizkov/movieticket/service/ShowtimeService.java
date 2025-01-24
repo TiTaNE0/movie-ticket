@@ -1,6 +1,7 @@
 package com.ogrizkov.movieticket.service;
 
 import com.ogrizkov.movieticket.dto.ShowtimeDto;
+import com.ogrizkov.movieticket.model.Showtime;
 
 import java.util.List;
 
@@ -17,6 +18,8 @@ public interface ShowtimeService {
     List<ShowtimeDto> getShowtimesByTheater(Long theaterId);
 
     void updateSeatAvailability(Long showtimeId, String seatNumber, boolean isBooked);
+
+    Showtime getShowtimeById(Long id);
 
     boolean isOverlapping(ShowtimeDto showtimeDto);
 }

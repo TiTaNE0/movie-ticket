@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@Transactional
 public class ShowtimeServiceImpl implements ShowtimeService {
 
     private final ShowtimeRepository showtimeRepository;
@@ -37,6 +36,7 @@ public class ShowtimeServiceImpl implements ShowtimeService {
     }
 
     @Override
+    @Transactional
     public ShowtimeDto addShowtime(ShowtimeDto showtimeDto) {
         if (isOverlapping(showtimeDto)) {
             throw new IllegalArgumentException("Showtime overlaps with an existing showtime in the same theater.");
@@ -69,10 +69,10 @@ public class ShowtimeServiceImpl implements ShowtimeService {
     }
 
     @Override
+    @Transactional
     public ShowtimeDto updateShowtime(Long id, ShowtimeDto showtimeDto) {
-        Showtime existingShowtime = showtimeRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Showtime not found"));
-        if (isOverlapping(showtimeDto) && !existingShowtime.getId().equals(showtimeDto.getId())) {
+        Showtime existingShowtime = getShowtimeById(id);
+        if (isOverlapping(showtimeDto)) { // && !existingShowtime.getId().equals(showtimeDto.getId())) {
             throw new IllegalArgumentException("Updated showtime overlaps with an existing showtime in the same theater.");
         }
         showtimeMapper.updateShowtimeFromDto(showtimeDto, existingShowtime);
@@ -85,6 +85,13 @@ public class ShowtimeServiceImpl implements ShowtimeService {
     }
 
     @Override
+    public Showtime getShowtimeById(Long id) {
+        return showtimeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Showtime not found"));
+    }
+
+    @Override
+    @Transactional
     public void deleteShowtime(Long id) {
         if (!showtimeRepository.existsById(id)) {
             throw new ResourceNotFoundException("Showtime not found");
@@ -112,11 +119,12 @@ public class ShowtimeServiceImpl implements ShowtimeService {
 
     @Override
     public boolean isOverlapping(ShowtimeDto showtimeDto) {
-        List<Showtime> existingShowtimes = showtimeRepository.findOverlappingShowtimes(
+        return showtimeRepository.isExist(
+                showtimeDto.getId(),
                 showtimeDto.getTheaterId(),
                 showtimeDto.getStartTime(),
-                showtimeDto.getEndTime());
-        return !existingShowtimes.isEmpty();
+                showtimeDto.getEndTime()
+        );
     }
 
     @Override

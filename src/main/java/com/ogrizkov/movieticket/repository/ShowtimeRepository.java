@@ -24,4 +24,16 @@ public interface ShowtimeRepository extends JpaRepository<Showtime, Long> {
                                             @Param("startTime") LocalDateTime startTime,
                                             @Param("endTime") LocalDateTime endTime);
 
+    @Query("""
+        SELECT CASE WHEN COUNT(s.id) > 0 THEN true ELSE false END
+        FROM Showtime s
+        LEFT JOIN s.theater t
+        WHERE t.id = :theaterId AND s.id <> :showtimeId
+        AND :startTime < s.endTime AND :endTime > s.startTime
+    """)
+    boolean isExist(@Param("showtimeId") Long showtimeId,
+                    @Param("theaterId") Long theaterId,
+                    @Param("startTime") LocalDateTime startTime,
+                    @Param("endTime") LocalDateTime endTime);
+
 }

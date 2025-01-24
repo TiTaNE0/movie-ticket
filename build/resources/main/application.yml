@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:file:./h2prod
     driver-class-name: org.h2.Driver
     username: sa
     password:
@@ -9,8 +9,15 @@ spring:
       enabled: true
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: true
+  security:
+    user:
+      password: 1234
+
+server:
+  error:
+    include-message: always
 
 springdoc:
   api-docs:

@@ -9,9 +9,8 @@ import com.ogrizkov.user.UserRepository;
 import com.ogrizkov.user.UserRole;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class DataLoader {
     @Bean
     public CommandLineRunner leadData(UserRepository userRepository,
